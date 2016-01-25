@@ -1,13 +1,13 @@
 # <img src="https://cloud.githubusercontent.com/assets/7833470/10899314/63829980-8188-11e5-8cdd-4ded5bcb6e36.png" height="60"> Angular Lab Solutions
 
-An example of how we would want to connect our data to the front end is using our nested resources.  Here's an example of how you can access individual answers:
+You can use a nested `$resource` in Angular to interact with associated data on the server. Here's an example of how you can access a question's answers:
 
 ```js
 angular.module('questionApp').factory('Question', [
-  '$resource', function($resource) {
+  '$resource', function ($resource) {
     return $resource('questions/:id/:subResource', {}, {
-      comments: {  // The `comments` action definition:
-        params: {subResource: 'answers'},
+      answers: {  // The `answers` action definition:
+        params: { subResource: 'answers' },
         method: 'GET'
       }
     });
