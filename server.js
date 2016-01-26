@@ -20,7 +20,11 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'hbs');
 
 // connect to mongodb
-mongoose.connect('mongodb://localhost/qa');
+mongoose.connect(
+  process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost/qa'
+);
 
 app.get('/api/questions', function (req, res) {
 	Question.find(function (err, allQuestions) {
