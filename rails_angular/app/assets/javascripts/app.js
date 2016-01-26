@@ -4,7 +4,7 @@ app.config(['$routeProvider', '$locationProvider',
   function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'home.html',
+        templateUrl: '/home.html',
         controller: 'HomeCtrl'
       })
       .otherwise({
