@@ -50,6 +50,7 @@ app.controller('HomeCtrl', ['$scope', 'Question', function($scope, Question) {
     $scope.addQuestion = function() {
         console.log('button is clicked');
         $scope.newQuestion.$save(function(data) {
+        	$scope.allQuestions = Question.query();
             console.log("success!");
         }, function(error) {
             console.log("error!");
@@ -91,6 +92,9 @@ app.controller('QuestionCtrl', ['$scope', '$routeParams', 'Question', 'Answer', 
     $scope.addAnswer = function() {
         console.log('button is clicked');
         $scope.newAnswer.$save(function(data) {
+        	$scope.allAnswers = Answer.query({
+		        question_id: questionId
+		    });
             console.log("success!");
         }, function(error) {
             console.log("error!");
