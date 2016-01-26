@@ -1,0 +1,8 @@
+<div class="row" ng-repeat="q in allQuestions['$$state']['value']">
+	<div class="well">
+		<b><a ng-href="/question/{{q._id}}">{{q.title}}</a></b><br>
+		{{q.body}}<br>
+		<a ng-href="/question/{{q._id}}"><span class="glyphicon glyphicon-pencil"></span></a>
+		<a ng-click="delete(q)"><span class="glyphicon glyphicon-trash"></a></span></a>
+	</div>
+</div>

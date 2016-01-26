@@ -1,0 +1,27 @@
+body {
+	margin-top: 25px;
+}
+
+#search-well {
+	width: 200px;
+}
+
+#search-list {
+	margin: 5px;
+}
+
+#question-body-form {
+	height: 200px;
+}
+
+#answer-body-form {
+	height: 125px;
+}
+
+#search-results-well {
+	margin-top: -25px;
+}
+
+.glyphicon {
+	margin-top: 8px;
+}
