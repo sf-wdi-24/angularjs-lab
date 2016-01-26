@@ -23,6 +23,16 @@ class Api::AnswersController < ApplicationController
     end
   end
 
+  def destroy
+    @answer = Answer.find(params[:id])
+    if @answer.destroy
+      render json: @answer
+    else
+      render json: { errors: @answer.errors.full_messages.join(", ") }, status: :unprocessable_entity
+    end
+
+  end
+
   private
     def answer_params
       params.permit(:question_id, :answer)

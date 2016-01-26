@@ -108,4 +108,12 @@ app.controller('QuestionCtrl', ['$scope', '$routeParams', 'Question', 'Answer', 
             console.log("error!");
         });
     };
+    $scope.deleteAnswer = function(answer) {
+        console.log("delete button clicked!", answer);
+        answer.$delete(function(data) {
+            console.log("success!");
+        }, function(error) {
+            console.log("error!");
+        });
+    };
 }]);
