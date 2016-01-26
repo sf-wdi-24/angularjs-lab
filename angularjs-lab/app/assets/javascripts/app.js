@@ -37,12 +37,20 @@ app.controller('HomeCtrl', ['$scope', 'Question', function ($scope, Question) {
   	});
   };
   $scope.editQuestion = function(question) {
-  	console.log("button clicked!", question);
+  	console.log("edit button clicked!", question);
   	question.editting = true;
   };
   $scope.updateQuestion = function(question) {
   	console.log("question updated!", question);
   	question.$update(function(data) {
+  		console.log("success!");
+  	}, function(error) {
+  		console.log("error!");
+  	});
+  };
+  $scope.deleteQuestion = function(question) {
+  	console.log("delete button clicked!", question);
+  	question.$delete(function(data) {
   		console.log("success!");
   	}, function(error) {
   		console.log("error!");

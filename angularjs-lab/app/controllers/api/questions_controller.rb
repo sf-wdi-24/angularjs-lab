@@ -16,11 +16,21 @@ class Api::QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-      if @question.update_attributes(question_params)
+    if @question.update_attributes(question_params)
       render json: @question
     else
       render json: { errors: @question.errors.full_messages.join(", ") }, status: :unprocessable_entity
-      end
+    end
+  end
+
+  def destroy
+    @question = Question.find(params[:id])
+    if @question.destroy
+      render json: @question
+    else
+      render json: { errors: @question.errors.full_messages.join(", ") }, status: :unprocessable_entity
+    end
+
   end
 
 
