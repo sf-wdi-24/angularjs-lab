@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="qaApp">
+<head>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+  <%= stylesheet_link_tag    :application, media: 'all'%>
+  <%= javascript_include_tag :application%>
+
+  <title>NgRailsQa</title>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
