@@ -19,7 +19,9 @@ app.config(['$routeProvider', '$locationProvider',
 ]);
 
 app.factory("Question", ["$resource", function($resource) {
-	return $resource('/api/questions/:id', { id: '@id'});
+	return $resource('/api/questions/:id', { id: '@id'}, {
+		"update": { method: "PUT"}
+	});
 }]);
 
 app.controller('HomeCtrl', ['$scope', 'Question', function ($scope, Question) {
@@ -29,6 +31,18 @@ app.controller('HomeCtrl', ['$scope', 'Question', function ($scope, Question) {
   $scope.addQuestion = function() {
   	console.log('button is clicked');
   	$scope.newQuestion.$save(function(data) {
+  		console.log("success!");
+  	}, function(error) {
+  		console.log("error!");
+  	});
+  };
+  $scope.editQuestion = function(question) {
+  	console.log("button clicked!", question);
+  	question.editting = true;
+  };
+  $scope.updateQuestion = function(question) {
+  	console.log("question updated!", question);
+  	question.$update(function(data) {
   		console.log("success!");
   	}, function(error) {
   		console.log("error!");
