@@ -1,0 +1,14 @@
+<div ng-repeat="question in questions">
+	<div>
+		<p>{{question.content}}</p>
+		<div ng-repeat="ans in question.answers"> 
+
+		<p>{{ans.ans}}</p>
+		
+		</div>
+		<form ng-submit='newAnswer(question)'>
+			<input type="text" ng-model="question.answer.ans" placeholder="Please type your question here" />
+			<input type="submit" id="submit" value="Submit" />
+		</form>
+	</div>
+</div>
