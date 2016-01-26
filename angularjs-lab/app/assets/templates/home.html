@@ -5,7 +5,7 @@
 	<input type="submit" value="Save" class="btn btn-cta">
 </form>
 <div ng-repeat="question in allQuestions">
-	{{ question.ask }}
+	<h3><a ng-href="/question/{{ question.id }}">{{ question.ask }}</a></h3>
 	<button ng-click="editQuestion(question)">Edit</button>
 	<div ng-show="question.editting">
 		<form ng-submit="updateQuestion(question)" class="form-inline">

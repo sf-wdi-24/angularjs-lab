@@ -14,6 +14,11 @@ class Api::QuestionsController < ApplicationController
     end
   end
 
+  def show
+    @question = Question.find(params[:id])
+    render json: @question
+  end
+
   def update
     @question = Question.find(params[:id])
     if @question.update_attributes(question_params)

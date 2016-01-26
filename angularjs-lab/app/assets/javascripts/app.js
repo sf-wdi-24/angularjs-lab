@@ -7,6 +7,10 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'home.html',
         controller: 'HomeCtrl'
       })
+      .when('/question/:id', {
+        templateUrl: 'question.html',
+        controller: 'QuestionCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -56,4 +60,9 @@ app.controller('HomeCtrl', ['$scope', 'Question', function ($scope, Question) {
   		console.log("error!");
   	});
   };
+}]);
+
+app.controller('QuestionCtrl', ['$scope', '$routeParams','Question', function ($scope, $routeParams, Question) {
+	var questionId = $routeParams.id;
+	$scope.question = Question.get({id: questionId});
 }]);
