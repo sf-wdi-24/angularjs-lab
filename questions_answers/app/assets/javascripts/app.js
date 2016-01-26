@@ -19,19 +19,38 @@ app.config(['$routeProvider', '$locationProvider',
 ]);
 
 app.factory('Question', ['$resource', function ($resource) {
-  return $resource('/api/questions/:id', { id: '@id' });
+  return $resource('/api/questions/:id', { id: '@id' }, 
+    {
+      update: { method: 'PUT' }
+    });
 }]);
 
 app.controller('HomeCtrl', ['$scope', 'Question' , function ($scope, Question) {
   $scope.homeTest = "Welcome to the homepage!";
   $scope.allQuestions =  Question.query();
   $scope.addQuestion = function () {
-    var newQuestion  = $scope.question;
+    var newQuestion  = $scope.newQuestion;
     Question.save(newQuestion, function (data) {
       $scope.allQuestions =  Question.query();
       console.log("Success");
     }, function (error) {
       console.log ("error", error);
     });
+  };
+
+  $scope.editQuestion = function (question) {
+    var editedQuestion = question;
+    Question.update({id: question.id}, editedQuestion, function(data) {
+    });
+    $scope.editForm = false;
+  };
+
+  $scope.deleteQuestion = function(question) {
+    Question.delete({id: question.id});
+    questionToBeDelete = $scope.allQuestions.filter(function(eachQuestion) {
+      return eachQuestion.id === question.id;
+    })[0];
+    questionToBeDeleteIndex = $scope.allQuestions.indexOf(questionToBeDelete);
+    $scope.allQuestions.splice(questionToBeDeleteIndex, 1);
   };
 }]);

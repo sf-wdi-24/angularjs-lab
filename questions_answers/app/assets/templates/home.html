@@ -1,15 +1,39 @@
-<form ng-submit="addQuestion()">
-	<div class="form-group">
-		<input type="text" ng-model="question.title" class="form-group" placeholder="Title">
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<form ng-submit="addQuestion()">
+				<div class="form-group">
+					<input type="text" ng-model="newQuestion.title" class="form-control" placeholder="Title">
+				</div>
+				<div class="form-group">
+					<input type="text" ng-model="newQuestion.description" class="form-control" placeholder="Question">
+				</div>
+				<div class="form-group">
+					<input type="submit"class="btn btn-primary form-control" value="Ask">
+				</div>
+			</form>
+			<div ng-repeat="question in allQuestions">
+				<p>{{question.title}}
+					<a href="javascript:void(0)" ng-click="deleteQuestion(question)" class="glyphicon glyphicon-trash pull-right"></a>
+					<a href="javascript:void(0)" ng-click="editForm=true" ng-hide="editForm" class="glyphicon glyphicon-pencil pull-right"></a>
+				</p>
+				<p>{{question.description}}</p>
+				<div ng-show="editForm">
+					<form ng-submit="editQuestion(question)">
+						<div class="form-group">
+							<input type="text" ng-model="question.title" class="form-control" placeholder="Title">
+						</div>
+						<div class="form-group">
+							<input type="text" ng-model="question.description" class="form-control" placeholder="Question">
+						</div>
+						<div class="form-group">
+							<input type="submit"class="btn btn-primary form-control" value="Ask">
+						</div>
+					</form>
+				</div>
+				<hr>
+			</div>
+		</div>
 	</div>
-	<div class="form-group">
-		<input type="text" ng-model="question.description" class="form-group" placeholder="Question">
-	</div>
-	<div class="form-group">
-		<input type="submit"class="btn btn-primary form-group" value="Ask">
-	</div>
-</form>
-
-<div ng-repeat="question in allQuestions">
-	<p>{{question.title}} - {{question.description}}</p>
 </div>
+
