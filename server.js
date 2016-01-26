@@ -46,14 +46,14 @@ app.post('/api/questions', function (req, res) {
 app.post('/api/answers', function (req, res) {
 	var newAnswer = new Answer(req.body);
 	var questionId = req.body.question_id;
-	Question.find({_id: questionId}, function(err, foundQuestion){
+	Question.findOne({_id: questionId}, function(err, foundQuestion){
 		if(err){console.error(err);}
 	    else {
 	    	newAnswer.save(function (err, savedAnswer) {
 				if (err) {
 				  res.status(500).json({ error: err.message });
 				} else {
-					foundQuestion[0].answers.push(savedAnswer);
+					foundQuestion.answers.push(savedAnswer);
 					foundQuestion.save();
 					res.json(savedAnswer);
 				}

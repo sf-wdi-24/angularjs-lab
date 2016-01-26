@@ -1,4 +1,5 @@
 <div class="well">
+	<h3>Question</h3>
 	<b>{{question['$$state']['value'][0].title}}</b><br>
 	{{question['$$state']['value'][0].body}}<br>
 	<a ng-click="delete(q)">
@@ -23,6 +24,10 @@
 </form>
 
 <div class="well">
-	Answers:<br>
-	{{question['$$state']['value'][0]}}
+	<h3>Answers</h3>
+	<div class="rowanswers" ng-repeat="a in question['$$state']['value'][0].answers">
+		<b>{{a.title}}</b><br>
+		{{a.body}}<br>
+		-----------
+	</div>
 </div>
