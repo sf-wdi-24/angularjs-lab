@@ -1,10 +1,10 @@
-var app = angular.module('sampleApp', ['ngRoute', 'templates']);
+var app = angular.module('sampleApp', ['ngRoute']);
 
 app.config(['$routeProvider', '$locationProvider',
 	function($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/', {
-				templateUrl: 'home.html',
+				templateUrl: 'templates/home.html',
 				controller: 'HomeCtrl'
 			})
 			.otherwise({
