@@ -28,6 +28,12 @@ app.factory("Question", ["$resource", function($resource) {
 	});
 }]);
 
+app.factory("Answer", ["$resource", function($resource) {
+	return $resource('/api/questions/:question_id/answers/:id', { question_id: '@question_id', id: '@id'}, {
+		"update": { method: "PUT"}
+	});
+}]);
+
 app.controller('HomeCtrl', ['$scope', 'Question', function ($scope, Question) {
   $scope.homeTest = "Welcome to the homepage!";
   $scope.allQuestions = Question.query();
@@ -62,7 +68,19 @@ app.controller('HomeCtrl', ['$scope', 'Question', function ($scope, Question) {
   };
 }]);
 
-app.controller('QuestionCtrl', ['$scope', '$routeParams','Question', function ($scope, $routeParams, Question) {
+app.controller('QuestionCtrl', ['$scope', '$routeParams','Question', 'Answer', function ($scope, $routeParams, Question, Answer) {
 	var questionId = $routeParams.id;
 	$scope.question = Question.get({id: questionId});
+	$scope.allAnswers = Answer.query({question_id: questionId});
+	$scope.newAnswer = new Answer({
+		question_id: questionId
+	});
+	$scope.addAnswer = function() {
+  		console.log('button is clicked');
+  		$scope.newAnswer.$save(function(data) {
+	  		console.log("success!");
+	  	}, function(error) {
+	  		console.log("error!");
+	  	});
+	  };
 }]);
