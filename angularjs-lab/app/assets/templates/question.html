@@ -7,4 +7,13 @@
 </form>
 <div ng-repeat=" answer in allAnswers">
 	{{ answer.answer}}
+	<button ng-click="editAnswer(answer)">Edit</button>
+	<div ng-show="answer.editting">
+		<form ng-submit="updateAnswer(answer)" class="form-inline">
+			<div class="form-group">
+				<input type="text" value="{{answer.answer}}" ng-model="answer.answer" class="form-control" placeholder="Edit answer" autofocus>
+			</div>
+			<input type="submit" value="save" class="btn btn-cta">
+		</form>
+	</div>
 </div>
