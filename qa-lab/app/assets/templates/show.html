@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="showQuestion">
+			<h3 class="page-header">{{question.title}}</h3>
+			<pre>{{ question.content }}</pre>
+		</div>
+		<hr>
+		<button class="btn buttons" ng-click="showAnswerForm = !showAnswerForm" ng-hide="showAnswerForm">Have an answer?</button>
+		<div ng-show="showAnswerForm" class="addAnswer">
+			<form ng-submit="newAnswer()">
+				<div class="form-group">
+					<input type="text" class="form-control" ng-model="answer.response" placeholder="Answer">
+				</div>
+				<div class="form-group">
+					<input type="submit" class="form-control buttons" value="Drop knowledge bomb">
+				</div>
+			</form>	
+		</div>
+	</div>
+</div>
