@@ -1,0 +1,26 @@
+{
+  "name": "angularjs-lab",
+  "version": "1.0.0",
+  "description": "Here is where you will be able to submit your \"Questions and Answers App\".",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sf-wdi-24/angularjs-lab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sf-wdi-24/angularjs-lab/issues"
+  },
+  "homepage": "https://github.com/sf-wdi-24/angularjs-lab#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "hbs": "^4.0.0",
+    "mongoose": "^4.3.7"
+  }
+}
