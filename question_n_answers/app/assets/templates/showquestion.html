@@ -1,0 +1,15 @@
+<h1 class="text-center">{{ question.title }}</h1>
+<h3>{{ question.body }}</h2>
+<hr>
+<div ng-repeat="answer in answers">
+  
+  <hr>
+</div>
+<button ng-hide="addAnswerForm" ng-click="addAnswerForm=true" class="btn btn-block btn-primary">Answer this Question</button>
+
+<form ng-show="addAnswerForm" id="answerForm" ng-submit="addAnswer()">
+  <div class="form-group">
+    <input type="text" class="form-control" ng-model="answer.body" placeholder="Answer" autofocus>
+  </div>
+  <input type="submit" class="btn btn-primary btn-block">
+</form>
