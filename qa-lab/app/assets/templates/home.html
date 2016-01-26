@@ -1,0 +1,42 @@
+<div class="row">
+	<div class="col-md-12">
+		<h2 class="page-header">What do you need answered?</h2>
+		<form ng-submit="newQuestion()">
+			<div class="form-group">
+				<input type="text" class="form-control" ng-model="question.title" placeholder="Title of question" autofocus>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" ng-model="question.content" placeholder="Actual question">
+			</div>
+			<div class="form-group">
+				<input type="submit" class="form-control buttons" value="Ask">
+			</div>
+		</form>	
+	</div>
+</div>
+<div class="row">
+	<div ng-repeat="question in allQuestions">
+		<div class="well col-md-6">
+			<h4><strong><a href="/show/{{question.id}}">{{question.title}}</a></strong></h4>
+			<pre>{{question.content}}</pre>
+			<hr>
+			<span ng-click="showEditForm = !showEditForm" class="glyphicon glyphicon-pencil btn buttons"></span>
+			<span ng-click="deleteQuestion(question)" class="glyphicon glyphicon-trash btn buttons pull-right"></span>
+			<hr>
+			<div ng-show="showEditForm" class="edit-form">
+				<h4 class="text-center">Edit</h4>
+				<form ng-submit="updateQuestion(question)">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="question.title" placeholder="Title of question" autofocus>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="question.content" placeholder="Actual question">
+					</div>
+					<div class="form-group">
+						<input type="submit" class="form-control buttons" value="Update">
+					</div>
+				</form>	
+			</div>
+		</div>
+	</div>
+</div>
