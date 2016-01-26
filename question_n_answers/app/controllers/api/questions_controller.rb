@@ -37,11 +37,6 @@ class Api::QuestionsController < ApplicationController
 
   private
 
-    # def set_question
-    #   questionId = params[:id]
-    #   question = Question.find(questionId)
-    # end
-
     def question_params
       params.require(:question).permit(:title, :body)
     end

@@ -1,8 +1,8 @@
 <h1 class="text-center">{{ question.title }}</h1>
 <h3>{{ question.body }}</h2>
 <hr>
-<div ng-repeat="answer in answers">
-  
+<div ng-repeat="answer in question.answers">
+  <h4>{{answer.body}}</h4>
   <hr>
 </div>
 <button ng-hide="addAnswerForm" ng-click="addAnswerForm=true" class="btn btn-block btn-primary">Answer this Question</button>

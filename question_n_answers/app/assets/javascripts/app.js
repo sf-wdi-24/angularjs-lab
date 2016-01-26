@@ -28,6 +28,14 @@ app.factory('Question', ['$resource', function($resource) {
   return $resource('/api/questions/:id', { id: '@id' });
 }]);
 
+app.service('Answer', ['$resource', function ($resource) {
+  return $resource('/api/questions/:questionId/answers/:id', {questionId: '@questionId', id: '@id'}, {
+    update: {
+      method: 'PUT'
+    }
+  });
+}]);
+
 // Configure controllers
 app.controller('HomeCtrl', ['$scope', '$location', 'Question',
   function($scope, $location, Question) {
@@ -51,8 +59,8 @@ app.controller('HomeCtrl', ['$scope', '$location', 'Question',
 ]);
 
 // Configure controllers
-app.controller('QuestionsShowCtrl', ['$scope', '$location', 'Question', '$routeParams',
-  function($scope, $location, Question, $routeParams) {
+app.controller('QuestionsShowCtrl', ['$scope', '$location', '$http', 'Question', 'Answer', '$routeParams',
+  function($scope, $location, $http, Question, Answer, $routeParams) {
     var questionId = $routeParams.id;
     Question.get({ id: questionId },
       function(data) {
@@ -65,18 +73,33 @@ app.controller('QuestionsShowCtrl', ['$scope', '$location', 'Question', '$routeP
     );
 
     $scope.addAnswer = function() {
-      var questionData = $scope.question;
-      Question.save(questionData,
-        function(savedQuestion) {
-          $scope.questions = Question.query();
-          $location.path('/');
-          $scope.question = {};
+      $scope.answer.question_id = questionId;
+      var answerData = $scope.answer;
+      console.log('answerData', answerData);
+      Answer.save(answerData,
+        function(savedAnswer) {
+          console.log(savedAnswer);
+          $scope.question.answers.push(savedAnswer);
+          $scope.answer = {};
           $scope.addQuestionForm = false;
         },
         function(error) {
           console.log('error', error);
         }
       );
+
+      // var questionId = question.id;
+      // $http.post('/api/questions/'+questionId+'/answers', question.answer)
+      //   .then(function(response) {
+      //     console.log(response);
+      //     $scope.question.answer = {};
+      //     question.answers.push(response.data);
+      //   },
+      //   function(error) {
+      //     console.log(error);
+      //   }
+      // );
+
     };
   }
 ]);
