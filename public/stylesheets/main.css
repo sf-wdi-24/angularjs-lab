@@ -25,3 +25,8 @@ body {
 .glyphicon {
 	margin-top: 8px;
 }
+
+#update-form {
+	display: inline-block;
+	width: 300px;
+}

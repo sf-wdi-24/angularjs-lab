@@ -83,6 +83,10 @@ app.controller('QuestionCtrl', ['$scope', '$routeParams', 'API', function ($scop
   	API.createAnswer($scope.answer);
   	$scope.answer = {};
   };
+  $scope.updateQuestion = function(){
+    console.log($scope.upquestion);
+    API.update($scope.id,$scope.upquestion);
+  };
 }]);
 
 app.controller('QuestionsCtrl', ['$scope', '$location', 'API', function ($scope, $location, API) {

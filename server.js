@@ -77,7 +77,13 @@ app.get('/api/questions/:id', function (req, res) {
 });
 
 app.put('/api/questions/:id', function (req, res) {
-  
+	var questionId = req.params.id;
+	console.log(req.body);
+	var body = req.body;
+	Question.findOne({_id: questionId}, function(err, updatedQuestion) {
+		updatedQuestion.body = body.body;
+		updatedQuestion.save();
+	});
 });
 
 app.delete('/api/questions/:id', function (req, res) {

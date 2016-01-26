@@ -1,27 +1,28 @@
 <div class="well">
-	<h3>Question</h3>
-	<b>{{question['$$state']['value'][0].title}}</b><br>
-	{{question['$$state']['value'][0].body}}<br>
-	<a ng-click="delete(q)">
-		<span class="glyphicon glyphicon-trash"></a></span>
-	</a><br>
-	
+	<div class="row">
+		<div class="col-sm-7">
+			<h3>Question</h3>
+			<b>{{question['$$state']['value'][0].title}}</b><br>
+			{{question['$$state']['value'][0].body}}<br>
+			<a ng-click="delete(q)">
+				<span class="glyphicon glyphicon-trash"></a></span>
+			</a><br>
+		</div>
+		<div class="col-sm-4">
+		<br><br><br>
+			<form id="update-form">
+				<div class="form-group">
+					<b>Update Body</b>
+					<input type="text" class="form-control" placeholder="{{question['$$state']['value'][0].body}}" ng-model="upquestion.body">
+				</div>
+				<div class="form-group">
+					<button type="submit"  class="btn btn-primary" ng-click="updateQuestion(upquestion)">Submit</button>
+				</div>
+			</form>
+		</div>
+		<br>
+	</div>
 </div>
-
-<form>
-	<div class="form-group">
-		<label>Title</label>
-		<input type="text" class="form-control" ng-model="answer.title">
-	</div>
-	
-	<div class="form-group">
-		<label>Answer</label>
-		<input type="text" class="form-control" ng-model="answer.body" id="answer-body-form">
-	</div>
-	<div class="form-group">
-		<button type="submit" class="btn btn-primary" ng-click="submitAnswer(answer)">Submit</button>
-	</div>
-</form>
 
 <div class="well">
 	<h3>Answers</h3>
@@ -31,3 +32,18 @@
 		-----------
 	</div>
 </div>
+
+<form>
+	<div class="form-group">
+		<label>Answer Title</label>
+		<input type="text" class="form-control" ng-model="answer.title">
+	</div>
+	
+	<div class="form-group">
+		<label>Body</label>
+		<input type="text" class="form-control" ng-model="answer.body" id="answer-body-form">
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary" ng-click="submitAnswer(answer)">Submit</button>
+	</div>
+</form>
