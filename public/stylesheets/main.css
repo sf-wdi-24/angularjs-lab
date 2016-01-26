@@ -30,3 +30,13 @@ body {
 	display: inline-block;
 	width: 300px;
 }
+
+.icon {
+	text-align: right;
+	font-size: 30px;
+}
+
+#search {
+	margin-bottom: 7px;
+	margin-top: -5px;
+}
