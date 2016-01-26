@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'api/question'
+  # get 'api/question'
 
   root 'site#index'
 
   namespace :api, defaults: { format: :json } do
     resources :questions, except: [:new, :edit]
-  end
+    end
   get '*path', to: 'site#index'
 
 
